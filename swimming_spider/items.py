@@ -8,7 +8,8 @@
 import scrapy
 
 
-class SwimmingSpiderItem(scrapy.Item):
+class SwimmersItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    count = scrapy.Field()
+    pool_name = scrapy.Field()
+    city = scrapy.Field()

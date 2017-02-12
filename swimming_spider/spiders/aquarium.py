@@ -7,10 +7,14 @@ class AquariumSpider(scrapy.Spider):
     name = "aquarium"
     start_urls = ['http://www.basen-ostroleka.pl/']
 
+    # Items default variables
+    pool_name = "Aquarium"
+    city = "Ostrołęka"
+
     def parse(self, response):
         users = response.xpath('//div[@class="left"]/div/h3[text() = "Osób na basenie"]/following-sibling::div/text()').extract_first().strip()
         yield SwimmersItem(
             count=int(users),
-            pool_name="Aquarium",
-            city="Ostrołęka"
+            pool_name=self.pool_name,
+            city=self.city
         )
